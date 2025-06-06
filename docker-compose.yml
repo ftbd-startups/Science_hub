@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_SUPABASE_URL=${VITE_SUPABASE_URL:-http://localhost:54321}
+      - VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY}
+    depends_on:
+      - supabase
+    networks:
+      - science-hub
+
+  supabase:
+    image: supabase/supabase:latest
+    ports:
+      - "54321:54321"  # Supabase API
+      - "54322:54322"  # PostgreSQL
+      - "54323:54323"  # Gotrue
+      - "54324:54324"  # Realtime
+      - "54325:54325"  # Storage
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-your-super-secret-and-long-postgres-password}
+      - JWT_SECRET=${JWT_SECRET:-your-super-secret-jwt-token-with-at-least-32-characters-long}
+      - ANON_KEY=${ANON_KEY}
+      - SERVICE_ROLE_KEY=${SERVICE_ROLE_KEY}
+    volumes:
+      - supabase_data:/var/lib/postgresql/data
+      - ./supabase:/docker-entrypoint-initdb.d
+    networks:
+      - science-hub
+
+volumes:
+  supabase_data:
+
+networks:
+  science-hub:
+    driver: bridge 

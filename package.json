@@ -1,0 +1,43 @@
+{
+  "name": "science-hub-mvp",
+  "version": "1.0.0",
+  "description": "Online marketplace connecting companies with researchers",
+  "private": true,
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview",
+    "lint": "cd frontend && npm run lint",
+    "lint:fix": "cd frontend && npm run lint:fix",
+    "format": "cd frontend && npm run format",
+    "type-check": "cd frontend && npm run type-check",
+    "docker:dev": "docker-compose up --build",
+    "docker:down": "docker-compose down",
+    "start": "npm run dev",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:reset": "supabase db reset",
+    "supabase:status": "supabase status",
+    "supabase:link": "supabase link",
+    "supabase:push": "supabase db push",
+    "supabase:functions:deploy": "supabase functions deploy",
+    "deploy": "./scripts/deploy.sh",
+    "setup": "npm install && cd frontend && npm install"
+  },
+  "keywords": [
+    "marketplace",
+    "researchers",
+    "companies",
+    "science",
+    "mvp"
+  ],
+  "author": "Science Hub Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "workspaces": [
+    "frontend"
+  ]
+} 

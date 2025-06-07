@@ -5,7 +5,7 @@ import { z } from 'zod'
 import { Link } from 'react-router-dom'
 import { Eye, EyeOff, UserPlus } from 'lucide-react'
 import { useAuthStore } from '@/store/authStore'
-import { UserRole } from '@/types/database'
+// import { UserRole } from '@/types/database'
 import { cn } from '@/lib/utils'
 
 const registerSchema = z.object({

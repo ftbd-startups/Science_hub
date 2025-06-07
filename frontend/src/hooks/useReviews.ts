@@ -248,6 +248,7 @@ export const useCanReview = (application: any, currentUserId: string) => {
       }
       
       // Проверяем, нет ли уже отзыва от этого пользователя
+      const queryClient = useQueryClient()
       const existingReviews = await queryClient.fetchQuery({
         queryKey: ['reviews', { application_id: application.id }],
         queryFn: async () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { CalendarIcon, CurrencyDollarIcon, MapPinIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline'
+import { CalendarIcon, CurrencyDollarIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline'
 import { Project } from '../../types/database'
 import { cn } from '../../lib/utils'
 
